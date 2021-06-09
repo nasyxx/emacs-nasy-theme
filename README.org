@@ -225,14 +225,16 @@ Nasy's Emacs Theme
        ((,class (:background ,n-富春紡
                              :foreground ,n-墨))))
      `(centaur-tabs-selected-modified
-       ((,class (:inherit centaur-tabs-selected
-                          :slant italic))))
+       ((,class (:background ,n-富春紡
+                             :foreground ,n-墨
+                             :slant italic))))
      `(centaur-tabs-unselected
        ((,class (:background ,n-胡粉
                              :foreground ,n-墨灰))))
      `(centaur-tabs-unselected-modified
-       ((,class (:inherit centaur-tabs-unselected
-                          :slant italic))))
+       ((,class (:background ,n-胡粉
+                             :foreground ,n-墨灰
+                             :slant italic))))
      `(centaur-tabs-active-bar-face
        ((,class (:background ,n-墨))))
 
