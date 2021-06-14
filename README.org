@@ -223,16 +223,18 @@ Nasy's Emacs Theme
                              :foreground ,n-墨))))
      `(centaur-tabs-selected
        ((,class (:background ,n-富春紡
-                             :foreground ,n-墨))))
+                             :foreground ,n-墨
+                             :underline (:color ,n-墨)))))
      `(centaur-tabs-selected-modified
        ((,class (:background ,n-富春紡
                              :foreground ,n-墨
-                             :slant italic))))
+                             :slant italic
+                             :underline (:color ,n-墨 :style wave)))))
      `(centaur-tabs-unselected
-       ((,class (:background ,n-胡粉
+       ((,class (:background ,n-春緑
                              :foreground ,n-墨灰))))
      `(centaur-tabs-unselected-modified
-       ((,class (:background ,n-胡粉
+       ((,class (:background ,n-水黄
                              :foreground ,n-墨灰
                              :slant italic))))
      `(centaur-tabs-active-bar-face
