@@ -189,17 +189,15 @@ Should be one or more in `comment', `hl-line'."
 
    ;;; centaur-tabs
    `(centaur-tabs-default
-     ((,class (:background ,n-春緑
+     ((,class (:background ,n-米灰
                            :foreground ,n-墨))))
    `(centaur-tabs-selected
      ((,class (:background ,n-富春紡
-                           :foreground ,n-墨
-                           :underline (:color ,n-墨)))))
+                           :foreground ,n-墨))))
    `(centaur-tabs-selected-modified
      ((,class (:background ,n-富春紡
                            :foreground ,n-墨
-                           :slant italic
-                           :underline (:color ,n-墨 :style wave)))))
+                           :slant italic))))
    `(centaur-tabs-unselected
      ((,class (:background ,n-春緑
                            :foreground ,n-墨灰))))
