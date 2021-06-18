@@ -1,4 +1,4 @@
-#+PROPERTY: header-args:elisp :tangle (expand-file-name "nasy-theme.el") :lexical t
+#+PROPERTY: header-args:emacs-lisp :tangle (expand-file-name "nasy-theme.el") :lexical t
 #+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline author:t
 #+options: broken-links:mark c:nil creator:nil d:(not "LOGBOOK") date:t e:t
 #+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
@@ -19,7 +19,7 @@ Nasy's Emacs Theme
 
 * Header                                                 :noexport:
 
-#+begin_src elisp
+#+begin_src emacs-lisp
   ;;; nasy-theme.el --- Nasy's Emacs Configuration theme file.  -*- lexical-binding: t; -*-
 
   ;; Copyright (C) 2020  Nasy
@@ -43,7 +43,7 @@ Nasy's Emacs Theme
 
 * Definition
 
-#+begin_src elisp
+#+begin_src emacs-lisp
   (defgroup nasy-theme nil
     "Options of Nasy's theme."
     :group 'faces)
@@ -129,7 +129,7 @@ Nasy's Emacs Theme
 
 * Theme
 
-#+begin_src elisp
+#+begin_src emacs-lisp
   (deftheme nasy)
 
   (let* ((class '((class color) (min-colors 89)))
@@ -563,7 +563,7 @@ Nasy's Emacs Theme
 
 * Footer                                                 :noexport:
 
-#+begin_src elisp
+#+begin_src emacs-lisp
   (provide 'nasy-theme)
   ;;; nasy-theme.el ends here
 #+end_src
