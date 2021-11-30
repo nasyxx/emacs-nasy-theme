@@ -136,6 +136,8 @@ Should be one or more in `comment', `hl-line'."
        (n-鸭黄     "#FAFF72")
        (n-鹅黄     "#FFF143")
        (n-黛       "#4A4266")
+       (n-向日黃   "#FFC34D")
+       (n-鳳仙粉   "#FF9393")
        (n/丁香青莲  (--l?d n-青莲 n-青莲))
        (n/墨墨灰    (--l?d n-墨 n-墨灰))
        (n/墨灰墨    (--l?d n-墨灰 n-墨))
@@ -165,7 +167,7 @@ Should be one or more in `comment', `hl-line'."
    `(bold ((,class (:weight bold))))
    `(button          ((,class (:box (:line-width 1) :underline t :weight bold))))
    `(cursor          ((,class (:background ,n/黛霜 :foreground ,n/霜黛))))
-   `(error           ((,class (:background ,n-鱼肚 :foreground ,n-品红 :weight bold))))
+   `(error           ((,class (:background ,n-鳳仙粉 :foreground ,n-紫扇貝 :weight bold))))
    `(escape-glyph    ((,class (:foreground ,n-茶))))
    `(fixed-pitch
      ((,class (:family ,nasy-theme-fixed-pitch-font))))
@@ -184,7 +186,7 @@ Should be one or more in `comment', `hl-line'."
    `(success      ((,class (:background ,n-鱼肚 :foreground ,n-靛青 :weight bold))))
    `(variable-pitch
      ((,class (:family ,nasy-theme-variable-pitch-font))))
-   `(warning      ((,class (:background ,n-鱼肚 :foreground ,n-茶 :weight bold))))
+   `(warning      ((,class (:background ,n-富春紡 :foreground ,n-珈琲椶 :weight bold))))
 
 
    ;;; centaur-tabs
@@ -309,6 +311,11 @@ Should be one or more in `comment', `hl-line'."
 
    ;;; display-fill-column-indicator-mode
    `(fill-column-indicator ((,class (:background ,n-湖蓝 :foreground ,n-靛青))))
+
+
+   ;;; flycheck
+   `(flycheck-warning ((,class (:background ,n-牙
+                                            :underline (:style wave :color ,n-丁香)))))
 
    ;;; font-lock faces
    `(font-lock-builtin-face
