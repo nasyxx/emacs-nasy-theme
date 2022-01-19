@@ -386,6 +386,16 @@ Should be one or more in `comment', `hl-line'."
    `(mode-line          ((,class (:background ,n-胡粉))))
    `(mode-line-inactive ((,class (:background ,n-素))))
 
+   ;;; orderless
+   `(orderless-match-face-0
+     ((,class (:background ,n-龍泉靑瓷 :foreground ,n-靛青   :weight bold))))
+   `(orderless-match-face-1
+     ((,class (:background ,n-富春紡   :foreground ,n-紫扇貝 :weight bold))))
+   `(orderless-match-face-2
+     ((,class (:background ,n-紙棕     :foreground ,n-松绿   :weight bold))))
+   `(orderless-match-face-3
+     ((,class (:background ,n-鳳仙粉   :foreground ,n-珈琲椶 :weight bold))))
+
    ;;; org mode
    `(org-block
      ((,class (:background ,n-蠟白 :foreground ,n/墨缟 :extend t))))
