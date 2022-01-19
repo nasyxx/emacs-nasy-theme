@@ -1,6 +1,6 @@
 ;;; nasy-theme.el --- Nasy's Emacs Configuration theme file.  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2020  Nasy
+;; Copyright (C) 2022  Nasy
 
 ;; Author: Nasy <nasyxx@gmail.com>
 
