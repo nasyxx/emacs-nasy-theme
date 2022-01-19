@@ -526,6 +526,11 @@ Nasy's Emacs Theme
      `(page-break-lines
        ((,class (:inherit font-lock-comment-face :slant normal :underline nil))))
 
+
+     ;;; Show parens
+     `(show-paren-match    ((,class (:background ,n-丁香))))
+     `(show-paren-mismatch ((,class (:background ,n-鳳仙粉))))
+
      ;;; tab-line and tab-bar
      `(tab-line                               ((t (:inherit mode-line))))
      `(tab-line-tab                           ((t (:inherit mode-line))))
