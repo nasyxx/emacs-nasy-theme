@@ -176,7 +176,7 @@ Should be one or more in `comment', `hl-line'."
                                            :box (:line-width 2 :style released-button)
                                            :extend t
                                            :foreground ,n/靛青湖蓝))))
-   `(highlight    ((,class (:background ,n/墨缟
+   `(highlight    ((,class (:background ,n/墨缟 :foreground ,n/缟墨
                                         :distant-foreground ,n/霜黛))))
    `(internal-border ((,class (:background ,n/缟漆))))
    `(link         ((,class (:foreground ,n-靛青 :underline t))))
