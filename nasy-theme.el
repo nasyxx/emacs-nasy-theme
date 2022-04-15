@@ -104,6 +104,7 @@ Should be one or more in `comment', `hl-line'."
 
 (let* ((class '((class color) (min-colors 89)))
        (n-丁香     "#CCA4E3")
+       (n-淡紫丁香 "#e6cfe6")
        (n-品红     "#F00056")
        (n-墨       "#50616D")
        (n-墨灰     "#758A99")
@@ -113,13 +114,15 @@ Should be one or more in `comment', `hl-line'."
        (n-松花     "#BCE672")
        (n-水黄     "#DDEEC4")
        (n-龍泉靑瓷 "#C8E6C6")
-       (n-湖蓝     "#30DFF3")
+       (n-蛤粉     "#fdfff4")
+       (n-湖藍     "#30DFF3")
        (n-漆       "#161823")
        (n-火红     "#FF2D51")
        (n-牙       "#EEDEB0")
        (n-珈琲椶   "#705438")
        (n-米灰     "#D3CBAF")
        (n-紙棕     "#D2B38C")
+       (n-嬭油     "#fffdd0")
        (n-素       "#E0F0E9")
        (n-紫扇貝   "#923A60")
        (n-缟       "#F2ECDE")
@@ -138,12 +141,13 @@ Should be one or more in `comment', `hl-line'."
        (n-黛       "#4A4266")
        (n-向日黃   "#FFC34D")
        (n-鳳仙粉   "#FF9393")
+       (n-露玫瑰   "#ffe4e1")
        (n/丁香青莲  (--l?d n-青莲 n-青莲))
        (n/墨墨灰    (--l?d n-墨 n-墨灰))
        (n/墨灰墨    (--l?d n-墨灰 n-墨))
        (n/墨灰素    (--l?d n-墨灰 n-素))
        (n/墨缟      (--l?d n-墨 n-缟))
-       (n/湖蓝靛青  (--l?d n-湖蓝 n-靛青))
+       (n/湖藍靛青  (--l?d n-湖藍 n-靛青))
        (n/漆缟      (--l?d n-漆 n-缟))
        (n/牙墨      (--l?d n-牙 n-墨))
        (n/牙黛      (--l?d n-牙 n-黛))
@@ -155,7 +159,7 @@ Should be one or more in `comment', `hl-line'."
        (n/霜黛      (--l?d n-霜 n-黛))
        (n/青莲丁香  (--l?d n-青莲 n-丁香))
        (n/青莲牙    (--l?d n-青莲 n-牙))
-       (n/靛青湖蓝  (--l?d n-靛青 n-湖蓝))
+       (n/靛青湖藍  (--l?d n-靛青 n-湖藍))
        (n/黛缟      (--l?d n-黛 n-缟))
        (n/黛霜      (--l?d n-黛 n-霜)))
   (custom-theme-set-faces
@@ -175,7 +179,7 @@ Should be one or more in `comment', `hl-line'."
    `(header-line     ((,class (:background ,n-荼
                                            :box (:line-width 2 :style released-button)
                                            :extend t
-                                           :foreground ,n/靛青湖蓝))))
+                                           :foreground ,n/靛青湖藍))))
    `(highlight    ((,class (:background ,n/墨缟 :foreground ,n/缟墨
                                         :distant-foreground ,n/霜黛))))
    `(internal-border ((,class (:background ,n/缟漆))))
@@ -310,7 +314,7 @@ Should be one or more in `comment', `hl-line'."
      ((,class (:weight unspecified))))
 
    ;;; display-fill-column-indicator-mode
-   `(fill-column-indicator ((,class (:background ,n-湖蓝 :foreground ,n-靛青))))
+   `(fill-column-indicator ((,class (:background ,n-湖藍 :foreground ,n-靛青))))
 
 
    ;;; flycheck
@@ -329,7 +333,7 @@ Should be one or more in `comment', `hl-line'."
    `(font-lock-constant-face
      ((,class (:inherit font-lock-variable-name-face :weight bold))))
    `(font-lock-doc-face
-     ((,class (:background ,n-水黄 :foreground ,n/靛青湖蓝 :extend t))))
+     ((,class (:background ,n-水黄 :foreground ,n/靛青湖藍 :extend t))))
    `(font-lock-function-name-face
      ((,class (:foreground ,n-松绿 :underline t))))
    `(font-lock-keyword-face
@@ -337,7 +341,7 @@ Should be one or more in `comment', `hl-line'."
    `(font-lock-negation-char-face
      ((,class (:foreground ,n-珈琲椶))))
    `(font-lock-string-face
-     ((,class (:foreground ,n/靛青湖蓝))))
+     ((,class (:foreground ,n/靛青湖藍))))
    `(font-lock-type-face
      ((,class (:foreground ,n-松绿 :slant italic :weight bold))))
    `(font-lock-variable-name-face
@@ -398,9 +402,9 @@ Should be one or more in `comment', `hl-line'."
 
    ;;; org mode
    `(org-block
-     ((,class (:background ,n-蠟白 :foreground ,n/墨缟 :extend t))))
+     ((,class (:background ,n-蛤粉 :foreground ,n/墨缟 :extend t))))
    `(org-block-begin-line
-     ((,class (:background ,n-水黄
+     ((,class (:background ,n-嬭油
                            :box (:line-width 1 :style released-button)
                            :extend t
                            :foreground ,n/墨缟
@@ -433,29 +437,32 @@ Should be one or more in `comment', `hl-line'."
    `(org-headline-done
      ((,class (:underline (:color ,n-松花)))))
    `(org-level-1
-     ((,class (:background ,n-蠟白
+     ((,class (:background ,n-霜
                            :extend t
                            :foreground ,n-靛青
                            :height ,(--s? 1.4)
-                           :underline t
+                           :overline t
                            :weight bold))))
    `(org-level-2
-     ((,class (:background ,n-蠟白
+     ((,class (:background ,n-露玫瑰
                            :extend t
                            :foreground ,n-紫扇貝
                            :height ,(--s? 1.2)
+                           :overline t
                            :weight bold))))
    `(org-level-3
-     ((,class (:background ,n-蠟白
+     ((,class (:background ,n-春緑
                            :extend t
                            :foreground ,n-松绿
                            :height ,(--s? 1.1)
+                           :overline t
                            :weight bold))))
    `(org-level-4
-     ((,class (:background ,n-蠟白
+     ((,class (:background ,n-淡紫丁香
                            :extend t
                            :foreground ,n/青莲丁香
                            :height ,(--s? 1.1)
+                           :overline t
                            :weight bold))))
    `(org-level-5
      ((,class (:extend t
@@ -526,7 +533,7 @@ Should be one or more in `comment', `hl-line'."
    ;;; term
    `(term-color-black   ((,class (:background ,n-墨     :foreground ,n-墨))))
    `(term-color-blue    ((,class (:background ,n-靛青   :foreground ,n-靛青))))
-   `(term-color-cyan    ((,class (:background ,n-湖蓝   :foreground ,n-湖蓝))))
+   `(term-color-cyan    ((,class (:background ,n-湖藍   :foreground ,n-湖藍))))
    `(term-color-green   ((,class (:background ,n-松绿   :foreground ,n-松绿))))
    `(term-color-magenta ((,class (:background ,n-長萅蕐 :foreground ,n-長萅蕐))))
    `(term-color-red     ((,class (:background ,n-火红   :foreground ,n-火红))))
