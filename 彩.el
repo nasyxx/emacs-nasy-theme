@@ -1,0 +1,48 @@
+;;; 彩.el --- Nasy's Emacs theme colors.  -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;;; Code:
+
+(defconst n-丁香     "#CCA4E3")
+(defconst n-淡紫丁香 "#e6cfe6")
+(defconst n-品红     "#F00056")
+(defconst n-墨       "#50616D")
+(defconst n-墨灰     "#758A99")
+(defconst n-富春紡   "#FEF4B4")
+(defconst n-春緑     "#E3EFD1")
+(defconst n-松绿     "#057748")
+(defconst n-松花     "#BCE672")
+(defconst n-水黄     "#DDEEC4")
+(defconst n-龍泉靑瓷 "#C8E6C6")
+(defconst n-蛤粉     "#fdfff4")
+(defconst n-湖藍     "#30DFF3")
+(defconst n-漆       "#161823")
+(defconst n-火红     "#FF2D51")
+(defconst n-牙       "#EEDEB0")
+(defconst n-珈琲椶   "#705438")
+(defconst n-米灰     "#D3CBAF")
+(defconst n-紙棕     "#D2B38C")
+(defconst n-嬭油     "#fffdd0")
+(defconst n-素       "#E0F0E9")
+(defconst n-紫扇貝   "#923A60")
+(defconst n-缟       "#F2ECDE")
+(defconst n-胡粉     "#FFFAE8")
+(defconst n-芽灰     "#E3DBBF")
+(defconst n-茶       "#B35C44")
+(defconst n-荼       "#F3F9F1")
+(defconst n-蠟白     "#FEF8DE")
+(defconst n-長萅蕐   "#FF47D1")
+(defconst n-霜       "#E9F1F6")
+(defconst n-青莲     "#801DAE")
+(defconst n-靛青     "#177CB0")
+(defconst n-鱼肚     "#FCEFE8")
+(defconst n-鸭黄     "#FAFF72")
+(defconst n-鹅黄     "#FFF143")
+(defconst n-黛       "#4A4266")
+(defconst n-向日黃   "#FFC34D")
+(defconst n-鳳仙粉   "#FF9393")
+(defconst n-露玫瑰   "#ffe4e1")
+
+(provide '彩)
+;;; 彩.el ends here

@@ -18,6 +18,10 @@
 
 ;;; Code:
 
+(require '彩)
+(eval-when-compile
+  (require 'cl-lib))
+
 (defgroup nasy-theme nil
   "Options of Nasy's theme."
   :group 'faces)
@@ -35,7 +39,7 @@
 (defcustom nasy-theme-underlines-list '(comment)
   "Nasy theme uses underline on list.
 
-Should be one or more in `comment', `hl-line'."
+ Should be one or more in `comment', `hl-line'."
   :group 'nasy-theme
   :type '(list symbol))
 
@@ -103,45 +107,6 @@ Should be one or more in `comment', `hl-line'."
 (deftheme nasy)
 
 (let* ((class '((class color) (min-colors 89)))
-       (n-丁香     "#CCA4E3")
-       (n-淡紫丁香 "#e6cfe6")
-       (n-品红     "#F00056")
-       (n-墨       "#50616D")
-       (n-墨灰     "#758A99")
-       (n-富春紡   "#FEF4B4")
-       (n-春緑     "#E3EFD1")
-       (n-松绿     "#057748")
-       (n-松花     "#BCE672")
-       (n-水黄     "#DDEEC4")
-       (n-龍泉靑瓷 "#C8E6C6")
-       (n-蛤粉     "#fdfff4")
-       (n-湖藍     "#30DFF3")
-       (n-漆       "#161823")
-       (n-火红     "#FF2D51")
-       (n-牙       "#EEDEB0")
-       (n-珈琲椶   "#705438")
-       (n-米灰     "#D3CBAF")
-       (n-紙棕     "#D2B38C")
-       (n-嬭油     "#fffdd0")
-       (n-素       "#E0F0E9")
-       (n-紫扇貝   "#923A60")
-       (n-缟       "#F2ECDE")
-       (n-胡粉     "#FFFAE8")
-       (n-芽灰     "#E3DBBF")
-       (n-茶       "#B35C44")
-       (n-荼       "#F3F9F1")
-       (n-蠟白     "#FEF8DE")
-       (n-長萅蕐   "#FF47D1")
-       (n-霜       "#E9F1F6")
-       (n-青莲     "#801DAE")
-       (n-靛青     "#177CB0")
-       (n-鱼肚     "#FCEFE8")
-       (n-鸭黄     "#FAFF72")
-       (n-鹅黄     "#FFF143")
-       (n-黛       "#4A4266")
-       (n-向日黃   "#FFC34D")
-       (n-鳳仙粉   "#FF9393")
-       (n-露玫瑰   "#ffe4e1")
        (n/丁香青莲  (--l?d n-青莲 n-青莲))
        (n/墨墨灰    (--l?d n-墨 n-墨灰))
        (n/墨灰墨    (--l?d n-墨灰 n-墨))
