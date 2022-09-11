@@ -106,7 +106,8 @@
 
 (deftheme nasy)
 
-(let* ((class '((class color) (min-colors 89)))
+(let* ((class  '((class color) (background light)))
+       (classd '((class color) (background dark)))
        (n/丁香青莲  (--l?d n-青莲 n-青莲))
        (n/墨墨灰    (--l?d n-墨 n-墨灰))
        (n/墨灰墨    (--l?d n-墨灰 n-墨))
@@ -375,6 +376,9 @@
                            :foreground ,n/墨缟
                            :weight bold
                            :slant italic))))
+   `(org-cite-key
+     ((,class (:foreground ,n-松绿))
+      (,classd (:foreground ,n-蔥青))))
    `(org-code ((,class (:background ,n-米灰
                                     :foreground ,n-墨
                                     :inheit fixed-pitch))))
