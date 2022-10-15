@@ -9,7 +9,7 @@
 (defconst n-赤       "#c3272b")
 (defconst n-白       "#ffffff")  ;; 精白
 (defconst n-黑       "#000000")
-(defconst n-黄       "#fff143")  ;; 不知幖準而用鵝黃
+(defconst n-黄       "#fff143")  ;; 不知其法而用鵝黃
 
 
 ;;; 間色
@@ -58,6 +58,7 @@
 (defconst n-蒼青     "#7397ab")
 (defconst n-墨灰     "#758A99")
 
+(defconst n-养生主   "#b49b7f")
 
 (defconst n-茶       "#B35C44")
 (defconst n-鱼肚     "#FCEFE8")

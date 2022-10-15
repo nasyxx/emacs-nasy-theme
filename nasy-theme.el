@@ -112,8 +112,8 @@
 
 (deftheme nasy)
 
-(let* ((class  '((class color) (background light)))
-       (classd '((class color) (background dark)))
+(let* ((class  '((class color) (min-colors 88) (background light)))
+       (classd '((class color) (min-colors 88) (background dark)))
        (n/淺背景    "#f6c3f280e88e") ;; (color-lighten-name n-缟 2.9)
        (n/深背景    "#16b918ca2427") ;; (color-lighten-name n-漆 2.9)
        (n/丁香青莲  (--l?d n-青莲 n-青莲))
@@ -155,12 +155,12 @@
                                            :box (:line-width 2 :style released-button)
                                            :extend t
                                            :foreground ,n/靛青湖藍))))
-   `(highlight    ((,class (:background ,n/墨缟 :foreground ,n/缟墨
+   `(highlight    ((,class (:background ,n-米灰
                                         :distant-foreground ,n/霜黛))))
    `(internal-border ((,class (:background ,n/缟漆))))
    `(link         ((,class (:foreground ,n-靛青 :underline t))))
    `(link-visited ((,class (:foreground ,n-青莲 :underline t))))
-   `(region       ((,class (:background ,n-龍泉靑瓷 :distant-foreground ,n/墨缟 :extend t))))
+   `(region       ((,class (:background ,n-春緑 :distant-foreground ,n/墨缟 :extend t))))
    `(secondary-selection ((,class (:background ,n-芽灰))))
    `(success      ((,class (:background ,n-鱼肚 :foreground ,n-靛青 :weight bold))))
    `(variable-pitch
@@ -338,6 +338,10 @@
                                    :underline ,(--u? 'hl-line)
                                    :weight bold))))
 
+   ;;; minibuffer
+   `(minibuffer-prompt ((,class (:foreground ,n-松绿 :weight bold
+                                             :underline t))))
+
    ;;; mode line
    `(doom-modeline-buffer-minor-mode
      ((,class (:inherit mode-line))))
@@ -368,13 +372,13 @@
 
    ;;; orderless
    `(orderless-match-face-0
-     ((,class (:background ,n-龍泉靑瓷 :foreground ,n-靛青   :weight bold))))
+     ((,class (:background ,n-富春紡   :foreground ,n-蒼翠 :weight bold))))
    `(orderless-match-face-1
-     ((,class (:background ,n-富春紡   :foreground ,n-紫扇貝 :weight bold))))
-   `(orderless-match-face-2
-     ((,class (:background ,n-紙棕     :foreground ,n-松绿   :weight bold))))
-   `(orderless-match-face-3
      ((,class (:background ,n-鳳仙粉   :foreground ,n-珈琲椶 :weight bold))))
+   `(orderless-match-face-2
+     ((,class (:background ,n-龍泉靑瓷 :foreground ,n-靛青   :weight bold))))
+   `(orderless-match-face-3
+     ((,class (:background ,n-紙棕     :foreground ,n-松绿   :weight bold))))
 
    ;;; org mode
    `(org-block
@@ -531,7 +535,11 @@
    `(tree-sitter-hl-face:property
      ((,class (:inherit font-lock-constant-face :bold nil))))
    `(tree-sitter-hl-face:operator
-     ((,class (:background ,n-蠟白 :bold t :inherit font-lock-negation-char-face))))))
+     ((,class (:background ,n-蠟白 :bold t :inherit font-lock-negation-char-face))))
+
+   ;;; vertico
+   `(vertico-mouse  ((,class (:background ,n-紙棕
+                                          :inherit highlight))))))
 
 ;;;###autoload
 (and load-file-name
