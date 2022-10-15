@@ -41,6 +41,7 @@ Nasy's Emacs Theme
   ;;; Code:
 
   (require '彩)
+  (require 'color)
   (eval-when-compile
     (require 'cl-lib))
 #+end_src
@@ -171,9 +172,14 @@ Nasy's Emacs Theme
     :type 'string)
 
   (defcustom nasy-theme-variable-pitch-font "Cardo"
-    "Nasy theme variable patch font."
+    "Nasy theme variable pitch font."
     :group 'nasy-theme
     :type 'string)
+
+  (defcustom nasy-theme-variable-pitch-font-weight 'regular
+    "Nasy theme variable pitch font weight."
+    :group 'nasy-theme
+    :type 'symbol)
 
   (defcustom nasy-theme-fixed-pitch-font-scale 1.0
     "Nasy theme fixed pitch font scale."
@@ -234,6 +240,8 @@ Nasy's Emacs Theme
 
   (let* ((class  '((class color) (background light)))
          (classd '((class color) (background dark)))
+         (n/淺背景    "#f6c3f280e88e") ;; (color-lighten-name n-缟 2.9)
+         (n/深背景    "#16b918ca2427") ;; (color-lighten-name n-漆 2.9)
          (n/丁香青莲  (--l?d n-青莲 n-青莲))
          (n/墨墨灰    (--l?d n-墨 n-墨灰))
          (n/墨灰墨    (--l?d n-墨灰 n-墨))
@@ -267,6 +275,7 @@ Nasy's Emacs Theme
      `(escape-glyph    ((,class (:foreground ,n-茶))))
      `(fixed-pitch
        ((,class (:family ,nasy-theme-fixed-pitch-font))))
+     `(fixed-pitch-serif ((t (:inherit fixed-pitch))))
      `(fringe          ((,class (:background ,n/缟漆 :foreground ,n/墨缟))))
      `(header-line     ((,class (:background ,n-荼
                                              :box (:line-width 2 :style released-button)
@@ -281,7 +290,8 @@ Nasy's Emacs Theme
      `(secondary-selection ((,class (:background ,n-芽灰))))
      `(success      ((,class (:background ,n-鱼肚 :foreground ,n-靛青 :weight bold))))
      `(variable-pitch
-       ((,class (:family ,nasy-theme-variable-pitch-font))))
+       ((,class (:family ,nasy-theme-variable-pitch-font
+                         :weight ,nasy-theme-variable-pitch-font-weight))))
      `(warning      ((,class (:background ,n-富春紡 :foreground ,n-珈琲椶 :weight bold))))
 
 
@@ -494,7 +504,8 @@ Nasy's Emacs Theme
 
      ;;; org mode
      `(org-block
-       ((,class (:background ,n-蛤粉 :foreground ,n/墨缟 :extend t))))
+       ((,class (:background ,n/淺背景 :foreground ,n-墨 :extend t))
+        (,classd (:background ,n/深背景 :foreground ,n-缟 :extend t))))
      `(org-block-begin-line
        ((,class (:background ,n-嬭油
                              :box (:line-width 1 :style released-button)
@@ -510,19 +521,17 @@ Nasy's Emacs Theme
                                       :inheit fixed-pitch))))
      `(org-document-title
        ((,class (:background ,n-富春紡
-                             :extend nil
+                             :extend t
                              :foreground ,n/墨缟
                              :height ,(--s? 1.7)
                              :weight bold))))
      `(org-document-info
-       ((,class (:background ,n/素墨
-                             :extend t
+       ((,class (:extend nil
                              :foreground ,n/墨缟
                              :height ,(--s? 1.2)
                              :slant italic))))
      `(org-document-info-keyword
        ((,class (:background ,n/素墨
-                             :extend t
                              :foreground ,n/墨缟
                              :height ,(--s? 1.2)
                              :slant italic))))
@@ -531,66 +540,16 @@ Nasy's Emacs Theme
                       :foreground ,n/墨缟))))
      `(org-headline-done
        ((,class (:underline (:color ,n-松花)))))
-     `(org-level-1
-       ((,class (:background ,n-霜
-                             :extend t
-                             :foreground ,n-靛青
-                             :height ,(--s? 1.4)
-                             :overline t
-                             :weight bold))))
-     `(org-level-2
-       ((,class (:background ,n-露玫瑰
-                             :extend t
-                             :foreground ,n-紫扇貝
-                             :height ,(--s? 1.2)
-                             :overline t
-                             :weight bold))))
-     `(org-level-3
-       ((,class (:background ,n-春緑
-                             :extend t
-                             :foreground ,n-松绿
-                             :height ,(--s? 1.1)
-                             :overline t
-                             :weight bold))))
-     `(org-level-4
-       ((,class (:background ,n-淡紫丁香
-                             :extend t
-                             :foreground ,n/青莲丁香
-                             :height ,(--s? 1.1)
-                             :overline t
-                             :weight bold))))
-     `(org-level-5
-       ((,class (:extend t
-                         :foreground ,n-靛青
-                         :height ,(--s? 1.1)
-                         :slant italic
-                         :weight normal))))
-     `(org-level-6
-       ((,class (:extend t
-                         :foreground ,n-茶
-                         :height ,(--s? 1.1)
-                         :slant italic
-                         :weight normal))))
-     `(org-level-7
-       ((,class (:extend t
-                         :foreground ,n-松绿
-                         :height ,(--s? 1.1)
-                         :slant italic
-                         :weight normal))))
-     `(org-level-8
-       ((,class (:extend t
-                         :foreground ,n/青莲丁香
-                         :height ,(--s? 1.1)
-                         :slant italic
-                         :weight normal))))
      `(org-list-dt ((,class (:height ,(--s? 1.1) :weight bold))))
      `(org-meta-line
        ((,class (:inherit font-lock-comment-face
                           :underline nil))))
+     `(org-property-value ((,class (:foreground ,n-松绿))))
      `(org-roam-link
        ((,class (:inherit org-link
                           :overline  t
                           :underline t))))
+     `(org-special-keyword ((,class (:foreground ,n-深竹月))))
      `(org-superstar-header-bullet ((,class (:background ,n-富春紡))))
      `(org-superstar-item ((,class (:foreground ,n-靛青))))
      `(org-tag
@@ -603,6 +562,61 @@ Nasy's Emacs Theme
      `(org-verbatim ((,class (:background ,n-春緑
                                           :foreground ,n-墨
                                           :inheit fixed-pitch))))
+
+     ;;; Outline
+     ;; Also the org-levels
+     `(outline-1
+       ((,class (:background ,n-霜
+                             :extend nil
+                             :foreground ,n-靛青
+                             :height ,(--s? 1.4)
+                             :overline t
+                             :weight bold))))
+     `(outline-2
+       ((,class (:background ,n-露玫瑰
+                             :extend nil
+                             :foreground ,n-紫扇貝
+                             :height ,(--s? 1.2)
+                             :overline t
+                             :weight bold))))
+     `(outline-3
+       ((,class (:background ,n-春緑
+                             :extend nil
+                             :foreground ,n-松绿
+                             :height ,(--s? 1.1)
+                             :overline t
+                             :weight bold))))
+     `(outline-4
+       ((,class (:background ,n-淡紫丁香
+                             :extend nil
+                             :foreground ,n/青莲丁香
+                             :height ,(--s? 1.1)
+                             :overline t
+                             :weight bold))))
+     `(outline-5
+       ((,class (:extend t
+                         :foreground ,n-靛青
+                         :height ,(--s? 1.1)
+                         :slant italic
+                         :weight normal))))
+     `(outline-6
+       ((,class (:extend t
+                         :foreground ,n-茶
+                         :height ,(--s? 1.1)
+                         :slant italic
+                         :weight normal))))
+     `(outline-7
+       ((,class (:extend t
+                         :foreground ,n-松绿
+                         :height ,(--s? 1.1)
+                         :slant italic
+                         :weight normal))))
+     `(outline-8
+       ((,class (:extend t
+                         :foreground ,n/青莲丁香
+                         :height ,(--s? 1.1)
+                         :slant italic
+                         :weight normal))))
 
      ;;; page break lines
      `(page-break-lines
