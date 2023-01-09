@@ -17,6 +17,14 @@
 
 Nasy's Emacs Theme
 
+* 截圖                                              :noexport:
+
+[[./screenshot1.png]]
+[[./screenshot2.png]]
+[[./screenshot3.png]]
+[[./screenshot4.png]]
+[[./screenshot5.png]]
+
 * Header                                                 :noexport:
 
 #+begin_src emacs-lisp
