@@ -160,7 +160,7 @@ Nasy's Emacs Theme
     :group 'nasy-theme
     :type 'boolean)
 
-  (defcustom nasy-theme-underlines-list '(comment)
+  (defcustom nasy-theme-underlines-list '(comment constant dash-string keyword)
     "Nasy theme uses underline on list.
 
    Should be one or more in `comment', `hl-line'."
@@ -241,8 +241,11 @@ Nasy's Emacs Theme
 
   (let* ((class  '((class color) (min-colors 88) (background light)))
          (classd '((class color) (min-colors 88) (background dark)))
-         (n/淺背景    "#f6c3f280e88e") ;; (color-lighten-name n-缟 2.9)
-         (n/深背景    "#16b918ca2427") ;; (color-lighten-name n-漆 2.9)
+         (n/淺背景    "#f4daefb6e3b6")  ;; (color-lighten-name n-缟 1.45)
+         (n/深背景    "#f109ea21da05")  ;; (color-darken-name n-缟 1.45)
+         (n/深深背景  "#ef20e757d52d")  ;; (color-darken-name n-缟 2.9)
+         (nd/淺背景   "#1667187123a5")  ;; (color-lighten-name n-漆 1.45)
+         (nd/淺淺背景 "#16b918ca2427")  ;; (color-lighten-name n-漆 2.9)
          (n/丁香青莲  (--l?d n-青莲 n-青莲))
          (n/墨墨灰    (--l?d n-墨 n-墨灰))
          (n/墨灰墨    (--l?d n-墨灰 n-墨))
@@ -413,6 +416,8 @@ Nasy's Emacs Theme
                              :weight bold))))
 
      ;;; dashboard
+     `(dashboard-heading
+       ((,class (:inherit font-lock-string-face :underline ,(--u? 'dash-string)))))
      `(widget-button
        ((,class (:weight unspecified))))
 
@@ -425,30 +430,66 @@ Nasy's Emacs Theme
                                               :underline (:style wave :color ,n-丁香)))))
 
      ;;; font-lock faces
+     `(font-lock-bracket-face
+       ((,class (:foreground ,n-茶))))
      `(font-lock-builtin-face
-       ((,class (:background ,n-春緑 :foreground ,n-珈琲椶 :slant italic))))
+       ((,class (:foreground ,n-黛 :weight bold))))
      `(font-lock-comment-delimiter-face
-       ((,class (:inherit font-lock-comment-face :weight bold))))
+       ((,class (:foreground ,n-墨 :weight bold
+                             :underline ,(--u? 'comment)))))
      `(font-lock-comment-face
-       ((,class (:foreground ,n/墨灰素
+       ((,class (:foreground ,n-墨 :weight light
                              :slant italic
                              :underline ,(--u? 'comment)))))
      `(font-lock-constant-face
-       ((,class (:inherit font-lock-variable-name-face :weight bold))))
+       ((,class (:foreground ,n-黛
+                             :underline ,(--u? 'constant)
+                             :weight bold))))
+     `(font-lock-delimiter-face
+       ((,class (:foreground ,n-蒼翠
+                             :background ,n-蔥青))))
      `(font-lock-doc-face
-       ((,class (:background ,n-水黄 :foreground ,n/靛青湖藍 :extend t))))
+       ((,class (:background ,n-春緑 :foreground ,n-墨 :weight light :extend t))))
+     `(font-lock-doc-markup-face
+       ((,class (:inherit font-lock-constant-face))))
+     `(font-lock-escape-face
+       ((,class (:foreground ,n-丁香))))
      `(font-lock-function-name-face
-       ((,class (:foreground ,n-松绿 :underline t))))
+       ((,class (:background ,n/深背景 :foreground ,n-墨 :weight bold))))
      `(font-lock-keyword-face
-       ((,class (:foreground ,n/墨缟 :weight bold))))
+       ((,class (:foreground ,n-黛
+                             :weight bold
+                             :underline ,(--u? 'keyword)))
+        (,classd (:foreground ,n-缟
+                              :weight bold
+                              :underline ,(--u? 'keyword)))))
+     `(font-lock-misc-punctuation-face
+       ((,class (:inherit font-lock-punctuation-face))))
      `(font-lock-negation-char-face
        ((,class (:foreground ,n-珈琲椶))))
+     `(font-lock-number-face
+       ((,class (:foreground ,n-深竹月))))
+     `(font-lock-operator-face
+       ((,class (:foreground ,n-羣青))))
+     `(font-lock-preprocessor-face
+       ((,class (:foreground ,n-紙棕 :slant italic))))
+     `(font-lock-property-face
+       ((,class (:foreground ,n-靛藍 :slant italic))))
+     `(font-lock-punctuation-face
+       ((,class (:foreground ,n-蔥青))))
+     `(font-lock-regexp-grouping-backslash
+       ((,class (:background ,n-淡紫丁香))))
+     `(font-lock-regexp-grouping-construct
+       ((,class (:background ,n-淡紫丁香))))
      `(font-lock-string-face
-       ((,class (:foreground ,n/靛青湖藍))))
+       ((,class (:background ,n/淺背景 :foreground ,n-青青))))
      `(font-lock-type-face
-       ((,class (:foreground ,n-松绿 :slant italic :weight bold))))
+       ((,class (:background ,n/深深背景
+                            :foreground ,n-墨
+                            :slant italic
+                            :weight bold))))
      `(font-lock-variable-name-face
-       ((,class (:foreground ,n-茶))))
+       ((,class (:foreground ,n-墨 :slant italic))))
      `(font-lock-warning-face
        ((,class (:background ,n-鸭黄 :foreground ,n-墨 :weight bold))))
 
@@ -470,22 +511,40 @@ Nasy's Emacs Theme
                                                :underline t))))
 
      ;;; mode line
+     `(doom-modeline-battery-charging
+       ((,class (:foreground ,n-寶藍))))
+     `(doom-modeline-battery-full
+       ((,class (:foreground ,n-松绿))))
+     `(doom-modeline-buffer-file
+       ((,class (:foreground ,n-墨
+                             :weight light))))
      `(doom-modeline-buffer-minor-mode
        ((,class (:inherit mode-line))))
      `(doom-modeline-buffer-modified
        ((,class (:foreground ,n-火红
                              :inherit mode-line
                              :weight bold))))
+     `(doom-modeline-buffer-major-mode
+       ((,class (:foreground ,n-火红 :weight light))))
+     `(doom-modeline-buffer-path
+       ((,class (:foreground ,n-墨
+                             :weight light))))
+     `(doom-modeline-debug
+       ((,class (:foreground ,n-墨 :weight light))))
      `(doom-modeline-info
        ((,class (:foreground ,n-靛青
                              :inherit mode-line
-                             :weight bold))))
+                             :weight light))))
      `(doom-modeline-lsp-error
        ((,class (:inherit doom-modeline-urgent))))
      `(doom-modeline-lsp-running
        ((,class (:inherit doom-modeline-warning))))
      `(doom-modeline-lsp-warning
        ((,class (:inherit doom-modeline-warning))))
+     `(doom-modeline-buffer-minor-mode
+       ((,class (:inherit mode-line :background nil))))
+     `(doom-modeline-project-dir
+       ((,class (:foreground ,n-青青 :weight bold))))
      `(doom-modeline-urgent
        ((,class (:foreground ,n-品红
                              :inherit mode-line
@@ -494,8 +553,8 @@ Nasy's Emacs Theme
        ((,class (:foreground ,n-松花
                              :inherit mode-line
                              :weight bold))))
-     `(mode-line          ((,class (:background ,n-胡粉))))
-     `(mode-line-inactive ((,class (:background ,n-素))))
+     `(mode-line          ((,class (:background ,n-胡粉 :weight light))))
+     `(mode-line-inactive ((,class (:background ,n-素 :weight light))))
 
      ;;; orderless
      `(orderless-match-face-0
@@ -510,7 +569,7 @@ Nasy's Emacs Theme
      ;;; org mode
      `(org-block
        ((,class (:background ,n/淺背景 :foreground ,n-墨 :extend t))
-        (,classd (:background ,n/深背景 :foreground ,n-缟 :extend t))))
+        (,classd (:background ,nd/淺背景 :foreground ,n-缟 :extend t))))
      `(org-block-begin-line
        ((,class (:background ,n-嬭油
                              :box (:line-width 1 :style released-button)
@@ -656,17 +715,12 @@ Nasy's Emacs Theme
      `(vterm-color-inverse-video
        ((,class (:background ,n-墨))))
 
-     ;;; tree sitter
-     `(tree-sitter-hl-face:constructor
-       ((,class (:inherit tree-sitter-hl-face:type :bold nil))))
-     `(tree-sitter-hl-face:property
-       ((,class (:inherit font-lock-constant-face :bold nil))))
-     `(tree-sitter-hl-face:operator
-       ((,class (:background ,n-蠟白 :bold t :inherit font-lock-negation-char-face))))
-
      ;;; vertico
      `(vertico-mouse  ((,class (:background ,n-紙棕
-                                            :inherit highlight))))))
+                                            :inherit highlight))))
+
+     ;;; which-func
+     `(which-func  ((,class (:foreground ,n-青青 :weight light))))))
 
   ;;;###autoload
   (and load-file-name
