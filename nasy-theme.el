@@ -320,7 +320,7 @@
                            :weight bold))))
    `(font-lock-delimiter-face
      ((,class (:foreground ,n-蒼翠
-                           :background ,n-蔥青))))
+                           :background ,n/深深背景))))
    `(font-lock-doc-face
      ((,class (:background ,n-春緑 :foreground ,n-墨 :weight light :extend t))))
    `(font-lock-doc-markup-face
