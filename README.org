@@ -26,6 +26,9 @@ Nasy's Emacs Theme
 [[./screenshot5.png]]
 
 * Header                                                 :noexport:
+:PROPERTIES:
+:ID:       A386FB66-D302-4910-9681-5AD20423B0E1
+:END:
 
 #+begin_src emacs-lisp
   ;;; nasy-theme.el --- Nasy's Emacs Configuration theme file.  -*- lexical-binding: t; -*-
@@ -55,6 +58,9 @@ Nasy's Emacs Theme
 #+end_src
 
 * Colors
+:PROPERTIES:
+:ID:       22A29749-9744-421C-9838-0344146A0ACF
+:END:
 
 #+begin_src emacs-lisp :tangle (expand-file-name "彩.el") :lexical t
   ;;; 彩.el --- Nasy's Emacs theme colors.  -*- lexical-binding: t; -*-
@@ -152,6 +158,9 @@ Nasy's Emacs Theme
 #+end_src
 
 * Definition
+:PROPERTIES:
+:ID:       957F26CD-C9BC-40E6-B9DE-41478964297B
+:END:
 
 #+begin_src emacs-lisp
   (defgroup nasy-theme nil
@@ -168,10 +177,10 @@ Nasy's Emacs Theme
     :group 'nasy-theme
     :type 'boolean)
 
-  (defcustom nasy-theme-underlines-list '(comment constant dash-string keyword)
+  (defcustom nasy-theme-underlines-list '(comment constant dash-string keyword hl-line)
     "Nasy theme uses underline on list.
 
-   Should be one or more in `comment', `hl-line'."
+   Should be one or more in `comment', `hl-line', `constant', `dash-string', `keyword'."
     :group 'nasy-theme
     :type '(list symbol))
 
@@ -243,6 +252,9 @@ Nasy's Emacs Theme
 #+end_src
 
 * Theme
+:PROPERTIES:
+:ID:       9C9E3DCF-EE33-42A5-A312-AE5D3218EA92
+:END:
 
 #+begin_src emacs-lisp
   (deftheme nasy)
@@ -298,7 +310,7 @@ Nasy's Emacs Theme
      `(internal-border ((,class (:background ,n/缟漆))))
      `(link         ((,class (:foreground ,n-靛青 :underline t))))
      `(link-visited ((,class (:foreground ,n-青莲 :underline t))))
-     `(region       ((,class (:background ,n-春緑 :distant-foreground ,n/墨缟 :extend t))))
+     `(region       ((,class (:background ,n-蠟白 :distant-foreground ,n/墨缟 :extend t))))
      `(secondary-selection ((,class (:background ,n-芽灰))))
      `(success      ((,class (:background ,n-鱼肚 :foreground ,n-靛青 :weight bold))))
      `(variable-pitch
@@ -484,7 +496,7 @@ Nasy's Emacs Theme
      `(font-lock-property-face
        ((,class (:foreground ,n-靛藍 :slant italic))))
      `(font-lock-punctuation-face
-       ((,class (:foreground ,n-蔥青))))
+       ((,class (:foreground ,n-春辰))))
      `(font-lock-regexp-grouping-backslash
        ((,class (:background ,n-淡紫丁香))))
      `(font-lock-regexp-grouping-construct
@@ -508,11 +520,11 @@ Nasy's Emacs Theme
      `(highlight-indent-guides-odd-face
        ((,class (:background ,n-春緑))))
      ;; hl-line
-     `(hl-line ((,class (:background ,n-芽灰
-                                     :distant-foreground ,n-墨
-                                     :extend t
-                                     :underline ,(--u? 'hl-line)
-                                     :weight bold))))
+     `(hl-line ((,class (:underline ,(--u? 'hl-line)
+                                    ;; :background ,n-芽灰
+                                    ;; :distant-foreground ,n-墨
+                                    :extend t
+                                    :weight bold))))
 
      ;;; minibuffer
      `(minibuffer-prompt ((,class (:foreground ,n-松绿 :weight bold
@@ -741,6 +753,9 @@ Nasy's Emacs Theme
 #+end_src
 
 * Footer                                                 :noexport:
+:PROPERTIES:
+:ID:       D06983B0-64EC-41CD-A6AD-D243B37D4DCC
+:END:
 
 #+begin_src emacs-lisp
   (provide 'nasy-theme)

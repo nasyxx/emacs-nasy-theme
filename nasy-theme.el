@@ -37,10 +37,10 @@
   :group 'nasy-theme
   :type 'boolean)
 
-(defcustom nasy-theme-underlines-list '(comment constant dash-string keyword)
+(defcustom nasy-theme-underlines-list '(comment constant dash-string keyword hl-line)
   "Nasy theme uses underline on list.
 
- Should be one or more in `comment', `hl-line'."
+ Should be one or more in `comment', `hl-line', `constant', `dash-string', `keyword'."
   :group 'nasy-theme
   :type '(list symbol))
 
@@ -163,7 +163,7 @@
    `(internal-border ((,class (:background ,n/缟漆))))
    `(link         ((,class (:foreground ,n-靛青 :underline t))))
    `(link-visited ((,class (:foreground ,n-青莲 :underline t))))
-   `(region       ((,class (:background ,n-春緑 :distant-foreground ,n/墨缟 :extend t))))
+   `(region       ((,class (:background ,n-蠟白 :distant-foreground ,n/墨缟 :extend t))))
    `(secondary-selection ((,class (:background ,n-芽灰))))
    `(success      ((,class (:background ,n-鱼肚 :foreground ,n-靛青 :weight bold))))
    `(variable-pitch
@@ -349,7 +349,7 @@
    `(font-lock-property-face
      ((,class (:foreground ,n-靛藍 :slant italic))))
    `(font-lock-punctuation-face
-     ((,class (:foreground ,n-蔥青))))
+     ((,class (:foreground ,n-春辰))))
    `(font-lock-regexp-grouping-backslash
      ((,class (:background ,n-淡紫丁香))))
    `(font-lock-regexp-grouping-construct
@@ -373,11 +373,11 @@
    `(highlight-indent-guides-odd-face
      ((,class (:background ,n-春緑))))
    ;; hl-line
-   `(hl-line ((,class (:background ,n-芽灰
-                                   :distant-foreground ,n-墨
-                                   :extend t
-                                   :underline ,(--u? 'hl-line)
-                                   :weight bold))))
+   `(hl-line ((,class (:underline ,(--u? 'hl-line)
+                                  ;; :background ,n-芽灰
+                                  ;; :distant-foreground ,n-墨
+                                  :extend t
+                                  :weight bold))))
 
    ;;; minibuffer
    `(minibuffer-prompt ((,class (:foreground ,n-松绿 :weight bold
