@@ -38,6 +38,7 @@
 (defconst n-水黄     "#ddeec4")
 (defconst n-春緑     "#e3efd1")
 (defconst n-蔥青     "#edfebb")
+(defconst n-断肠     "#ecebc2")
 
 (defconst n-絳       "#510312")
 (defconst n-胭脂     "#960018")

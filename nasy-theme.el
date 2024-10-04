@@ -37,7 +37,12 @@
   :group 'nasy-theme
   :type 'boolean)
 
-(defcustom nasy-theme-underlines-list '(comment constant dash-string keyword hl-line)
+(defcustom nasy-theme-outline-scale t
+  "Nasy theme uses scale up in `outline' or not."
+  :group 'nasy-theme
+  :type 'boolean)
+
+(defcustom nasy-theme-underlines-list '(comment constant dash-string hl-line)
   "Nasy theme uses underline on list.
 
  Should be one or more in `comment', `hl-line', `constant', `dash-string', `keyword'."
@@ -86,7 +91,13 @@
   (if nasy-theme-org-scale
       scale
     1))
+(defun nasy-theme--outline-scale? (scale)
+  "Determine using `outline' SCALE or not."
+  (if nasy-theme-outline-scale
+      scale
+    1))
 (defalias '--s? #'nasy-theme--scale?)
+(defalias '--os? #'nasy-theme--outline-scale?)
 
 (defun nasy-theme--check-underline-list (sym)
   "Check if SYM in `nasy-theme-underlines-list' or not."
@@ -115,7 +126,7 @@
 (let* ((class  '((class color) (min-colors 88) (background light)))
        (classd '((class color) (min-colors 88) (background dark)))
        (n/淺背景    "#f4daefb6e3b6")  ;; (color-lighten-name n-缟 1.45)
-       (n/深背景    "#f109ea21da05")  ;; (color-darken-name n-缟 1.45)
+       (n/深背景    "#F109ea21da05")  ;; (color-darken-name n-缟 1.45)
        (n/深深背景  "#ef20e757d52d")  ;; (color-darken-name n-缟 2.9)
        (nd/淺背景   "#1667187123a5")  ;; (color-lighten-name n-漆 1.45)
        (nd/淺淺背景 "#16b918ca2427")  ;; (color-lighten-name n-漆 2.9)
@@ -332,7 +343,8 @@
    `(font-lock-keyword-face
      ((,class (:foreground ,n-黛
                            :weight bold
-                           :underline ,(--u? 'keyword)))
+                           :underline ,(--u? 'keyword)
+                           :background ,n-断肠))
       (,classd (:foreground ,n-缟
                             :weight bold
                             :underline ,(--u? 'keyword)))))
@@ -343,7 +355,8 @@
    `(font-lock-number-face
      ((,class (:foreground ,n-深竹月))))
    `(font-lock-operator-face
-     ((,class (:foreground ,n-羣青))))
+     ((,class (:foreground ,n-羣青
+                           :background ,n-露玫瑰))))
    `(font-lock-preprocessor-face
      ((,class (:foreground ,n-紙棕 :slant italic))))
    `(font-lock-property-face
@@ -475,6 +488,9 @@
    `(org-done
      ((,class (:box (:line-width 2 :style released-button)
                     :foreground ,n/墨缟))))
+   `(org-ellipsis
+     ((,class (:foreground ,n-米灰
+                           :underline nil))))
    `(org-headline-done
      ((,class (:underline (:color ,n-松花)))))
    `(org-list-dt ((,class (:height ,(--s? 1.1) :weight bold))))
@@ -490,12 +506,12 @@
    `(org-superstar-header-bullet ((,class (:background ,n-富春紡))))
    `(org-superstar-item ((,class (:foreground ,n-靛青))))
    `(org-tag
-     ((,class (:background ,n/牙黛
-                           :box t
-                           :foreground ,n/墨缟
-                           :slant normal
-                           :underline nil
-                           :weight bold))))
+     ((,class (;; :background ,n/牙黛
+               :box nil
+                    :foreground ,n/墨缟
+                    :slant normal
+                    :underline nil
+                    :weight bold))))
    `(org-verbatim ((,class (:background ,n-春緑
                                         :foreground ,n-墨
                                         :inheit fixed-pitch))))
@@ -503,55 +519,59 @@
    ;;; Outline
    ;; Also the org-levels
    `(outline-1
-     ((,class (:background ,n-霜
-                           :extend nil
-                           :foreground ,n-靛青
-                           :height ,(--s? 1.4)
-                           :overline t
-                           :weight bold))))
-   `(outline-2
-     ((,class (:background ,n-露玫瑰
-                           :extend nil
-                           :foreground ,n-紫扇貝
-                           :height ,(--s? 1.2)
-                           :overline t
-                           :weight bold))))
-   `(outline-3
-     ((,class (:background ,n-春緑
-                           :extend nil
-                           :foreground ,n-松绿
-                           :height ,(--s? 1.1)
-                           :overline t
-                           :weight bold))))
-   `(outline-4
-     ((,class (:background ,n-淡紫丁香
-                           :extend nil
-                           :foreground ,n/青莲丁香
-                           :height ,(--s? 1.1)
-                           :overline t
-                           :weight bold))))
-   `(outline-5
-     ((,class (:extend t
+     ((,class (:extend nil
+                       ;; :background ,n-霜
                        :foreground ,n-靛青
-                       :height ,(--s? 1.1)
+                       :height ,(--os? 1.4)
+                       :overline nil
+                       :underline nil
+                       :weight bold))))
+   `(outline-2
+     ((,class (:extend nil
+                       ;; :background ,n-露玫瑰
+                       :foreground ,n-紫扇貝
+                       :height ,(--os? 1.2)
+                       :overline nil
+                       :underline nil
+                       :weight bold))))
+   `(outline-3
+     ((,class (:extend nil
+                       ;; :background ,n-春緑
+                       :foreground ,n-松绿
+                       :height ,(--os? 1.1)
+                       :overline nil
+                       :underline nil
+                       :weight bold))))
+   `(outline-4
+     ((,class (:extend nil
+                       ;; :background ,n-淡紫丁香
+                       :foreground ,n/青莲丁香
+                       :height ,(--os? 1.1)
+                       :overline nil
+                       :underline nil
+                       :weight bold))))
+   `(outline-5
+     ((,class (:extend nil
+                       :foreground ,n-靛青
+                       :height ,(--os? 1.1)
                        :slant italic
                        :weight normal))))
    `(outline-6
-     ((,class (:extend t
+     ((,class (:extend nil
                        :foreground ,n-茶
-                       :height ,(--s? 1.1)
+                       :height ,(--os? 1.1)
                        :slant italic
                        :weight normal))))
    `(outline-7
-     ((,class (:extend t
+     ((,class (:extend nil
                        :foreground ,n-松绿
-                       :height ,(--s? 1.1)
+                       :height ,(--os? 1.1)
                        :slant italic
                        :weight normal))))
    `(outline-8
-     ((,class (:extend t
+     ((,class (:extend nil
                        :foreground ,n/青莲丁香
-                       :height ,(--s? 1.1)
+                       :height ,(--os? 1.1)
                        :slant italic
                        :weight normal))))
 
